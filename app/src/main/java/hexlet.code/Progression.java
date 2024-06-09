@@ -24,10 +24,12 @@ public class Progression {
             int[] arrayNumber = new int[lengthArray];
             int hiddenPosition = random.nextInt(lengthArray);
             for (int i = 0; i < lengthArray - 1; i++) {
-                arrayNumber[0] = startLine;
-                arrayNumber[j] = arrayNumber[i] + difference;
-                j++;
-                ch = String.valueOf(arrayNumber[hiddenPosition]);
+                if (hiddenPosition != 0) {
+                    arrayNumber[0] = startLine;
+                    arrayNumber[j] = arrayNumber[i] + difference;
+                    j++;
+                    ch = String.valueOf(arrayNumber[hiddenPosition]);
+                }
             }
             System.out.println("Question: " + Arrays.toString(arrayNumber)
                     .replace("[", "").replace("]", "")
