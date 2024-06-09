@@ -1,5 +1,7 @@
 package hexlet.code;
-import static hexlet.code.Cli.greet;
+
+import hexlet.code.games.App1;
+
 import java.util.Scanner;
 
 public class App {
@@ -10,6 +12,7 @@ public class App {
         System.out.println("2 - Even");
         System.out.println("3 - Calc");
         System.out.println("4 - GCD");
+        System.out.println("5 - Progression");
         Scanner scanner = new Scanner(System.in);
         int name1 = scanner.nextInt();
         System.out.println("Your choice: " + name1);
@@ -23,6 +26,10 @@ public class App {
             Calc.calculate();
         } else if (name1 == 4) {
             GCD.divider();
+        } else if (name1 == 5) {
+            Progression.progressive();
+        } else if (name1 == 6) {
+            App1.testing();
         }
         scanner.close();
     }
