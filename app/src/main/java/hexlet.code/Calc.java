@@ -2,6 +2,7 @@ package hexlet.code;
 
 import java.util.Scanner;
 import java.util.Random;
+
 public class Calc {
     public static void calculate() {
         Scanner scanner = new Scanner(System.in);
@@ -41,7 +42,6 @@ public class Calc {
                 System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + result + "'.");
                 break;
             }
-
         }
         if (count == 3) {
             System.out.println("Congratulations, " + names + "!");

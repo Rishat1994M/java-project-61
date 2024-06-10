@@ -2,6 +2,7 @@ package hexlet.code;
 
 import java.util.Scanner;
 import java.util.Random;
+
 public class GCD {
     public static int randomNumber1;
     public static int randomNumber2;
@@ -27,9 +28,9 @@ public class GCD {
             int answer = scanner.nextInt();
             System.out.println("Your answer: " + answer);
 
-            if(randomNumber1%randomNumber2 == 0) {
+            if (randomNumber1 % randomNumber2 == 0) {
                 result = randomNumber2;
-            } else if (randomNumber2%randomNumber1 == 0) {
+            } else if (randomNumber2 % randomNumber1 == 0) {
                 result = randomNumber1;
             } else {
                 result = NOD(randomNumber1, randomNumber2);
@@ -49,7 +50,7 @@ public class GCD {
         }
         scanner.close();
     }
-    public static int NOD (int a, int b) {
+    public static int NOD(int a, int b) {
         if (b == 0) {
             return a;
         } else {

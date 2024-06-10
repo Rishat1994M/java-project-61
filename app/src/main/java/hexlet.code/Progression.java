@@ -5,8 +5,6 @@ import java.util.Random;
 import java.util.Arrays;
 
 public class Progression {
-    static String ch;
-
     public static void progressive() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the Brain Games!");
@@ -16,20 +14,21 @@ public class Progression {
         int count = 0;
         System.out.println("What number is missing in the progression?");
         Random random = new Random();
+        String ch = "";
+
         while (count < 3) {
+
             int j = 1;
             int startLine = random.nextInt(99);
-            int difference = random.nextInt(9);
+            int difference = random.nextInt(9) + 1;
             int lengthArray = random.nextInt(6) + 5;
             int[] arrayNumber = new int[lengthArray];
             int hiddenPosition = random.nextInt(lengthArray);
             for (int i = 0; i < lengthArray - 1; i++) {
-                if (hiddenPosition != 0) {
-                    arrayNumber[0] = startLine;
-                    arrayNumber[j] = arrayNumber[i] + difference;
-                    j++;
-                    ch = String.valueOf(arrayNumber[hiddenPosition]);
-                }
+                arrayNumber[0] = startLine;
+                arrayNumber[j] = arrayNumber[i] + difference;
+                j++;
+                ch = String.valueOf(arrayNumber[hiddenPosition]);
             }
             System.out.println("Question: " + Arrays.toString(arrayNumber)
                     .replace("[", "").replace("]", "")
@@ -52,4 +51,3 @@ public class Progression {
         scanner.close();
     }
 }
-
