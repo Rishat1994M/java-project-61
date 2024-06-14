@@ -4,10 +4,10 @@ plugins {
 }
 
 application {
-    mainClass = "java.hexlet.code.App"
+    mainClass = "hexlet.code.App"
 }
 
-group = "java.hexlet.code"
+group = "hexlet.code"
 version = "1.0-SNAPSHOT"
 
 repositories {
