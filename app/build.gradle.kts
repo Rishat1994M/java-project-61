@@ -1,13 +1,13 @@
 plugins {
-    id ("application")
-    id ("checkstyle")
+    application
+    checkstyle
 }
 
 application {
-    mainClass = "hexlet.code.App";
+    mainClass = "java.hexlet.code.App"
 }
 
-group = "hexlet.code"
+group = "java.hexlet.code"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -17,5 +17,3 @@ repositories {
 tasks.getByName("run", JavaExec::class) {
     standardInput = System.`in`
 }
-
-

@@ -1,20 +1,35 @@
+.DEFAULT_GOAL := build-run
+
+setup:
+	./gradlew wrapper --gradle-version 8.7
+
+clean:
+	./gradlew clean
+
+build:
+	./gradlew clean build
+
+install:
+	./gradlew clean install
+
 run-dist:
 	./build/install/app/bin/app
 
-up: 
-	cp -n .env.example .env
-	touch database/database.sqlite
-	composer install
-	npm install
-	php artisan key:generate
-	php artisan migrate --seed
-	heroku local -f Procfile.dev
-	
-install:
-	composer install
-	npm install
-build: dependencies
-    	./gradlew build
+run:
+	./gradlew run
 
-test: dependencies
-    	./gradlew test
+test:
+	./gradlew test
+
+report:
+	./gradlew jacocoTestReport
+
+lint:
+	./gradlew checkstyleMain checkstyleTest
+
+update-deps:
+	./gradlew useLatestVersions
+
+build-run: build run
+
+.PHONY: build

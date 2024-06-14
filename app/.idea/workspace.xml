@@ -5,19 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6e15356-0b4c-427a-8ef7-5938dd98de3c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet.code/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet.code/Calc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet.code/Cli.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet.code/Even.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet.code/GCD.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet.code/Prime.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet.code/Progression.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet.code/games/App1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../packageSearch-232.8660.48/packageSearch/lib/packageSearch.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../packageSearch-232.8660.48/packageSearch/lib/pkgs-tooling-extension.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hexlet/code/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hexlet/code/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,13 +38,7 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="app" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="app" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="application" type="c8890929:TasksNode$1" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -69,6 +56,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="ProjectErrors" />
@@ -89,7 +79,7 @@
   <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="hexlet.code.App" />
-      <module name="app.main" />
+      <module name="app" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="hexlet.code.*" />
@@ -130,9 +120,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.App" />
         <item itemvalue="Makefile Target.run-dist" />
         <item itemvalue="Gradle.app [run]" />
-        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
