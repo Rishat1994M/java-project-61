@@ -2,7 +2,7 @@ run-dist:
 	./build/install/app/bin/app
 
 build:
-	./gradle run
+	gradle build
 	
 install:
 	./gradlew clean install
