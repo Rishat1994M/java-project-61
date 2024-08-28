@@ -1,42 +1,30 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
-
-import java.util.Scanner;
+import hexlet.code.Generate;
+import static hexlet.code.Engine.COUNT;
 
 public class Even {
+    private static final String QUESTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
-    public static void game() {
-        Cli.greetings();
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-
-        int count = 0;
-        final int maxCount = 3;
-        String currentAnswer = "yes";
-
-        while (count < maxCount) {
-            Scanner answer = new Scanner(System.in);
-            final int number = (int) (Math.random() * 10);
-            final boolean checkAnswer = number % 2 == 0;
-
-            System.out.println("Question: " + number);
-            String answerNext = answer.next();
-
-            if (!(checkAnswer) && number > 0) {
-                currentAnswer = "no";
-            }
-
-            if (Engine.correctOrNot(answerNext.equals(currentAnswer), currentAnswer, answerNext)) {
-                break;
-            }
-
-            count++;
-            currentAnswer = "yes";
-        }
-
-
-        Engine.congratulations(count == maxCount);
+    public static void evenGreeting() {
+        String[][] answers = questions();
+        Engine.runEngine(QUESTION, answers);
     }
 
+    private static String[][] questions() {
+        String[][] questions = new String[COUNT][2];
+        for (int i = 0; i < COUNT; i++) {
+            int number = Generate.generateNum();
+            String question = String.valueOf(number);
+            String correctAnswer = isEven(number) ? "yes" : "no";
+            questions[i][0] = question;
+            questions[i][1] = correctAnswer;
+        }
+        return questions;
+    }
+
+    private static boolean isEven(int number) {
+        return number % 2 == 0;
+    }
 }
