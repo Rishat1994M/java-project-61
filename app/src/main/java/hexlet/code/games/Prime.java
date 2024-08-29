@@ -2,7 +2,8 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import hexlet.code.Generate;
+import hexlet.code.Generates;
+
 import static hexlet.code.Engine.COUNT;
 
 public class Prime {
@@ -16,7 +17,7 @@ public class Prime {
     private static String[][] questions() {
         String[][] questions = new String[COUNT][2];
         for (int i = 0; i < COUNT; i++) {
-            int number = Generate.generateNum();
+            int number = Generates.generateNum();
             String question = String.valueOf(number);
             String correctAnswer = answer(number);
             questions[i][0] = question;
@@ -26,6 +27,7 @@ public class Prime {
     }
 
     private static String answer(int number) {
+
         return isPrime(number) ? "yes" : "no";
     }
 

@@ -3,7 +3,7 @@ package hexlet.code;
 
 import java.util.Random;
 
-public class Generate {
+public class Generates {
     private static final int BOUND = 100;
     private static Random random = new Random();
 

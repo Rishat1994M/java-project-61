@@ -1,75 +1,56 @@
 
 package hexlet.code.games;
 
-import java.lang.reflect.Array;
-import org.apache.commons.lang3.StringUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 import hexlet.code.Engine;
-import hexlet.code.Generate;
+import hexlet.code.Generates;
+
 import static hexlet.code.Engine.COUNT;
 
 public class Progression {
     private static final String RULES = "What number is missing in the progression?";
-    private static final int SIZEIN = 5;
-    private static final int SIZEBOUND = 11;
-    private static final int PROGRESSION = 6;
+    private static final int MIN_SIZE = 5;
+    private static final int MAX_SIZE = 11;
+    private static final int MAX_STEP = 6;
+    private static final int MIN_STEP = 2;
 
     public static void progressionGreeting() {
-        String[][] answers = questions();
-        Engine.runEngine(RULES, answers);
+        String[][] questionsAndAnswers = generateQuestions();
+        Engine.runEngine(RULES, questionsAndAnswers);
     }
 
-    private static String[][] questions() {
-        String[][] questionsAndCorrectAnswers = new String[COUNT][2];
+    private static String[][] generateQuestions() {
+        String[][] questionsAndAnswers = new String[COUNT][2];
         for (int i = 0; i < COUNT; i++) {
-            int number = Generate.generateNum();
-            int step = generateProgressionStep();
-            int arraySize = generatorSizes();
-            int[] progression = generatorProgressions(number, step, arraySize);
-            int indexOfDots = generatorBounds(arraySize);
-            String question = generatorQuestions(number, step, indexOfDots, progression);
-            int correctAnswer = dataNumber(number, step, indexOfDots, progression);
-            questionsAndCorrectAnswers[i][0] = question;
-            questionsAndCorrectAnswers[i][1] = String.valueOf(correctAnswer);
+            int startNumber = Generates.generateNum();
+            int step = Generates.generaNum(MIN_STEP, MAX_STEP);
+            int progressionLength = Generates.generaNum(MIN_SIZE, MAX_SIZE);
+            int missingIndex = Generates.generaNum(1, progressionLength - 1);
+            int[] progression = generateProgressionArray(startNumber, step, progressionLength);
+            String question = createQuestion(progression, missingIndex);
+            int correctAnswer = progression[missingIndex];
+
+            questionsAndAnswers[i][0] = question;
+            questionsAndAnswers[i][1] = String.valueOf(correctAnswer);
         }
-        return questionsAndCorrectAnswers;
+        return questionsAndAnswers;
     }
 
-    private static int dataNumber(int number, int step, int indexOfDots, int[] progression) {
-        return (int) Array.get(progression, indexOfDots);
-    }
-
-    private static String generatorQuestions(int number, int step, int indexOfDots, int[] progression) {
-        String[] result = new String[progression.length];
+    private static String createQuestion(int[] progression, int index) {
+        List<String> result = new ArrayList<>();
         for (int i = 0; i < progression.length; i++) {
-            result[i] = String.valueOf(progression[i]);
+            result.add(i == index ? ".." : String.valueOf(progression[i]));
         }
-        result[indexOfDots] = "..";
-        return StringUtils.join(result, " ");
+        return String.join(" ", result);
     }
 
-    private static int[] generatorProgressions(int number, int step, int arraySize) {
-        int[] result = new int[arraySize];
-        for (int i = 0; i < result.length; i++) {
-            number = number + step;
-            result[i] = number;
+    private static int[] generateProgressionArray(int startNumber, int step, int length) {
+        int[] progression = new int[length];
+        for (int i = 0; i < length; i++) {
+            progression[i] = startNumber + i * step;
         }
-        return result;
-    }
-
-    private static int generatorSizes() {
-        return Generate.generaNum(SIZEIN, SIZEBOUND);
-    }
-
-    private static int generateProgressionStep() {
-        int origin = 2;
-        return Generate.generaNum(origin, PROGRESSION);
-    }
-
-    private static int generatorBounds(int arraySize) {
-        int origin = 2;
-        int dotesBound = arraySize;
-        return Generate.generaNum(origin, dotesBound);
+        return progression;
     }
 }
-
