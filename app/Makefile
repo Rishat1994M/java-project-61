@@ -1,5 +1,3 @@
-.PHONY: build
-
 run-dist:
 	./build/install/app/bin/app
 
@@ -8,3 +6,5 @@ build:
 	
 clean:
 	./gradlew clean
+	
+.PHONY: build
