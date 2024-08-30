@@ -23,7 +23,7 @@ public class Progression {
             int startNumber = Utils.generateNum();
             int step = Utils.generaNum(MIN_STEP, MAX_STEP);
             int progressionLength = Utils.generaNum(MIN_SIZE, MAX_SIZE);
-            int missingIndex = Utils.generaNum(0, progressionLength - 1); // Включаем индекс 0
+            int missingIndex = Utils.generaNum(0, progressionLength - 1);
 
             String[] progression = makeProgression(startNumber, step, progressionLength);
             String answer = progression[missingIndex];
