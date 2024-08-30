@@ -2,7 +2,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import hexlet.code.Generates;
+import hexlet.code.Utils;
 
 import static hexlet.code.Engine.COUNT;
 
@@ -17,7 +17,7 @@ public class Prime {
     private static String[][] questions() {
         String[][] questions = new String[COUNT][2];
         for (int i = 0; i < COUNT; i++) {
-            int number = Generates.generateNum();
+            int number = Utils.generateNum();
             String question = String.valueOf(number);
             String correctAnswer = answer(number);
             questions[i][0] = question;

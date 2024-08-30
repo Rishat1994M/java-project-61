@@ -1,7 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import hexlet.code.Generates;
+import hexlet.code.Utils;
 
 import static hexlet.code.Engine.COUNT;
 
@@ -16,8 +16,8 @@ public class GCD {
     private static String[][] questions() {
         String[][] questionsAndCorrectAnswers = new String[COUNT][2];
         for (int i = 0; i < COUNT; i++) {
-            int number1 = Generates.generateNum();
-            int number2 = Generates.generateNum();
+            int number1 = Utils.generateNum();
+            int number2 = Utils.generateNum();
             String question = (number1) + " " + (number2);
             String correctAnswer = String.valueOf(find(number1, number2));
             questionsAndCorrectAnswers[i][0] = question;

@@ -1,16 +1,12 @@
 package hexlet.code.games;
 
-import java.util.Random;
-
 import hexlet.code.Engine;
-import hexlet.code.Generates;
+import hexlet.code.Utils;
 
 import static hexlet.code.Engine.COUNT;
 
 public class Calc {
     private static final String RULES = "What is the result of the expression?";
-    private static final int GENERATENUMB = 3;
-    private static final String[] RANDOMOPERATOR = {"+", "-", "*", "-"};
 
     public static void calcGreeting() {
         String[][] answers = questions();
@@ -20,9 +16,9 @@ public class Calc {
     private static String[][] questions() {
         String[][] questionsAndCorrectAnswers = new String[COUNT][2];
         for (int i = 0; i < COUNT; i++) {
-            int number1 = Generates.generateNum();
-            int number2 = Generates.generateNum();
-            String operator = generateOperators();
+            int number1 = Utils.generateNum();
+            int number2 = Utils.generateNum();
+            String operator = Utils.generateOperators();
             String question = String.valueOf(number1) + " " + operator + " " + String.valueOf(number2);
             String correctAnswer = String.valueOf(calculate(number1, number2, operator));
             questionsAndCorrectAnswers[i][0] = question;
@@ -47,11 +43,5 @@ public class Calc {
             default:
                 throw new RuntimeException("Unknown operator: " + operator);
         }
-    }
-
-    private static String generateOperators() {
-        Random random = new Random();
-        int indexOfArray = random.nextInt(GENERATENUMB);
-        return RANDOMOPERATOR[indexOfArray];
     }
 }
