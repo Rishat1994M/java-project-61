@@ -12,20 +12,7 @@
 
 
 
-1. Game "Even"
-https://asciinema.org/a/t9iTTbX8GJuRUVYRXppa3cXEk
 
-2. Game "Calc"
-https://asciinema.org/a/pD1gMyD0OMiHVTJOeEd3LGwVo
-
-3. Game "GCD"
-https://asciinema.org/a/pyDfxhW2b6JCkOBNIp8vfGfnf
-
-4. Game "Progression"
-https://asciinema.org/a/6QhWko4M8QqtHtrwVlP3wDhdp
-
-5. Game "Prime"
-https://asciinema.org/a/MU7bd3Jxm3WVxdMlsIIS4ine4
 
 
 
