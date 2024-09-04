@@ -2,7 +2,9 @@ run-dist:
 	./build/install/app/bin/app
 
 build:
-	gradle build
+	./gradlew build install
 	
-install:
-	./gradlew clean install
+clean:
+	./gradlew clean
+	
+.PHONY: build

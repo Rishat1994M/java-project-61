@@ -1,15 +1,24 @@
+
 package hexlet.code;
 
 import java.util.Scanner;
 
-import hexlet.code.games.Calc;
-import hexlet.code.games.Even;
-import hexlet.code.games.GCD;
-import hexlet.code.games.Prime;
-import hexlet.code.games.Progression;
+import static hexlet.code.Cli.questionUser;
+import static hexlet.code.games.Even.evenGreeting;
+import static hexlet.code.games.Calc.calcGreeting;
+import static hexlet.code.games.GCD.gcdGreeting;
+import static hexlet.code.games.Progression.progressionGreeting;
+import static hexlet.code.games.Prime.primeGreeting;
+
 public class App {
+
     public static void main(String[] args) {
-        System.out.println("Please enter the game number and press Enter.");
+        showMenu();
+        runingGames();
+    }
+
+    private static void showMenu() {
+        System.out.println("Please enter the game number and press Enter");
         System.out.println("1 - Greet");
         System.out.println("2 - Even");
         System.out.println("3 - Calc");
@@ -17,24 +26,36 @@ public class App {
         System.out.println("5 - Progression");
         System.out.println("6 - Prime");
         System.out.println("0 - Exit");
+        System.out.println();
+    }
+
+    private static void runingGames() {
         Scanner scanner = new Scanner(System.in);
-        int name1 = scanner.nextInt();
-        System.out.println("Your choice: " + name1);
-        if (name1 == 1) {
-            Cli.greetings();
-        } else if (name1 == 0) {
-            return;
-        } else if (name1 == 2) {
-            Even.game();
-        } else if (name1 == 3) {
-            Calc.game();
-        } else if (name1 == 4) {
-            GCD.game();
-        } else if (name1 == 5) {
-            Progression.game();
-        } else if (name1 == 6) {
-            Prime.game();
+        System.out.print("Your choice: ");
+        String userChoice = scanner.next();
+        switch (userChoice) {
+            case ("1"):
+                questionUser();
+                break;
+            case ("2"):
+                evenGreeting();
+                break;
+            case ("3"):
+                calcGreeting();
+                break;
+            case ("4"):
+                gcdGreeting();
+                break;
+            case ("5"):
+                progressionGreeting();
+                break;
+            case ("6"):
+                primeGreeting();
+                break;
+            default:
+                break;
         }
         scanner.close();
     }
 }
+

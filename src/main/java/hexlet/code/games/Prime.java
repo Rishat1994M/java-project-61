@@ -1,49 +1,46 @@
+
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import static hexlet.code.Engine.COUNT;
 
 public class Prime {
+    private static final String RULES = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
-    static final List<Integer> PRIME_NUMBERS = new ArrayList<>(List.of(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31,
-            37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137,
-            139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199));
-
-    public static void game() {
-        Cli.greetings();
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-
-        int count = 0;
-        final int maxCount = 3;
-        String currentAnswer = "yes";
-
-        while (count < maxCount) {
-            Scanner answer = new Scanner(System.in);
-
-            final int question = (int) (Math.random() * 199);
-            final boolean checkAnswer = PRIME_NUMBERS.contains(question);
-
-            System.out.println("Question: " + question);
-            String answerNext = answer.next();
-
-            if (!(checkAnswer)) {
-                currentAnswer = "no";
-            }
-
-            if (Engine.correctOrNot(answerNext.equals(currentAnswer), currentAnswer, answerNext)) {
-                break;
-            }
-
-            count++;
-            currentAnswer = "yes";
-        }
-
-        Engine.congratulations(count == maxCount);
-
+    public static void primeGreeting() {
+        String[][] answers = questions();
+        Engine.runEngine(RULES, answers);
     }
 
+    private static String[][] questions() {
+        String[][] questions = new String[COUNT][2];
+        for (int i = 0; i < COUNT; i++) {
+            int number = Utils.generateNum();
+            String question = String.valueOf(number);
+            String correctAnswer = answer(number);
+            questions[i][0] = question;
+            questions[i][1] = correctAnswer;
+        }
+        return questions;
+    }
+
+    private static String answer(int number) {
+
+        return isPrime(number) ? "yes" : "no";
+    }
+
+    private static boolean isPrime(int number) {
+        if (number < 2) {
+            return false;
+        }
+        for (int i = 2; i <= number / 2; i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
+

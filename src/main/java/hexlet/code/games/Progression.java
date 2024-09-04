@@ -1,50 +1,48 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
-import java.util.Scanner;
+import static hexlet.code.Engine.COUNT;
 
 public class Progression {
+    private static final String RULES = "What number is missing in the progression?";
+    private static final int MIN_SIZE = 5;
+    private static final int MAX_SIZE = 11;
+    private static final int MAX_STEP = 6;
+    private static final int MIN_STEP = 2;
 
-    static final Scanner ANSWER = new Scanner(System.in);
-
-    public static void game() {
-        Cli.greetings();
-        System.out.println("What number is missing in the progression?");
-
-        int count = 0;
-        final int maxCount = 3;
-
-        while (count < maxCount) {
-
-            final int lengthArray = 10; // это же число есть максимально возможная дельта для прогрессии
-            String[] progression = new String[lengthArray];
-
-            final int maxNumberInProgression = 100;
-            progression[0] = (int) (Math.random() * maxNumberInProgression) + "";
-
-            final int delta = (int) (Math.random() * 10); // элемент с таким же индексом буду ислючать из прогрессии
-
-            for (int i = 1; i < progression.length; i++) {
-                progression[i] = Integer.parseInt(progression[i - 1]) + delta + "";
-            }
-            String answerNum = progression[delta];
-            progression[delta] = "..";
-
-
-            System.out.println("Question: " + String.join(" ", progression));
-            String answerNext = ANSWER.next();
-
-            if (Engine.correctOrNot(answerNext.equals(answerNum), answerNum, answerNext)) {
-                break;
-            }
-
-            count++;
-        }
-
-        Engine.congratulations(count == maxCount);
-
+    public static void progressionGreeting() {
+        String[][] questionsAndAnswers = generateQuestions();
+        Engine.runEngine(RULES, questionsAndAnswers);
     }
 
+    private static String[][] generateQuestions() {
+        String[][] questionsAndAnswers = new String[COUNT][2];
+        for (int i = 0; i < COUNT; i++) {
+            int startNumber = Utils.generateNum();
+            int step = Utils.generaNum(MIN_STEP, MAX_STEP);
+            int progressionLength = Utils.generaNum(MIN_SIZE, MAX_SIZE);
+            int missingIndex = Utils.generaNum(0, progressionLength - 1);
+
+            String[] progression = makeProgression(startNumber, step, progressionLength);
+            String answer = progression[missingIndex];
+
+            progression[missingIndex] = "..";
+            String question = String.join(" ", progression);
+
+            questionsAndAnswers[i][0] = question;
+            questionsAndAnswers[i][1] = answer;
+        }
+        return questionsAndAnswers;
+    }
+
+    private static String[] makeProgression(int first, int step, int length) {
+        String[] progression = new String[length];
+        for (int i = 0; i < length; i++) {
+            progression[i] = Integer.toString(first + i * step);
+        }
+        return progression;
+    }
 }
+//Надеюсь я правильно понял...

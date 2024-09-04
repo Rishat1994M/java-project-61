@@ -1,46 +1,47 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
-import java.util.Scanner;
+import static hexlet.code.Engine.COUNT;
 
 public class Calc {
-    static String question;
-    public static void game() {
-        Cli.greetings();
-        System.out.println("What is the result of the expression?");
-        int count = 0;
-        final int maxCount = 3;
-        while (count < maxCount) {
-            Scanner answer = new Scanner(System.in);
-            int result = getResult();
-            System.out.println(question);
-            final int answerNext = answer.nextInt();
-            if (Engine.correctOrNot(answerNext == result, result, answerNext)) {
-                break;
-            }
-            count++;
-        }
-        Engine.congratulations(count == maxCount);
-    }
-    private static int getResult() {
+    private static final String RULES = "What is the result of the expression?";
 
-        final int number1 = (int) (Math.random() * 100);
-        final int number2 = (int) (Math.random() * 100);
-        final int choiceAction = (int) (Math.random() * 3);
-        String action = " + ";
-        if (choiceAction == 0) {
-            action = " - ";
-            question = "Question: " + number1 + action + number2;
-            return number1 - number2;
-        } else if (choiceAction == 1) {
-            action = " * ";
-            question = "Question: " + number1 + action + number2;
-            return number1 * number2;
-        } else {
-            question = "Question: " + number1 + action + number2;
-            return number1 + number2;
+    public static void calcGreeting() {
+        String[][] answers = questions();
+        Engine.runEngine(RULES, answers);
+    }
+
+    private static String[][] questions() {
+        String[][] questionsAndCorrectAnswers = new String[COUNT][2];
+        for (int i = 0; i < COUNT; i++) {
+            int number1 = Utils.generateNum();
+            int number2 = Utils.generateNum();
+            String operator = Utils.generateOperators();
+            String question = String.valueOf(number1) + " " + operator + " " + String.valueOf(number2);
+            String correctAnswer = String.valueOf(calculate(number1, number2, operator));
+            questionsAndCorrectAnswers[i][0] = question;
+            questionsAndCorrectAnswers[i][1] = correctAnswer;
+        }
+        return questionsAndCorrectAnswers;
+    }
+
+    private static int calculate(int number1, int number2, String operator) {
+        switch (operator) {
+            case "+":
+                return number1 + number2;
+            case "-":
+                return number1 - number2;
+            case "*":
+                return number1 * number2;
+            case "/":
+                if (number1 == 0 || number1 == 0) {
+                    throw new ArithmeticException("Division by zero");
+                }
+                return number1 / number2;
+            default:
+                throw new RuntimeException("Unknown operator: " + operator);
         }
     }
 }

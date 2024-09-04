@@ -1,40 +1,35 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
-import java.util.Scanner;
+import static hexlet.code.Engine.COUNT;
 
 public class GCD {
+    private static final String RULES = "Find the greatest common divisor of given numbers.";
 
-    public static void game() {
-        Cli.greetings();
-        System.out.println("Find the greatest common divisor of given numbers.");
-
-        int count = 0;
-        final int maxCount = 3;
-
-        while (count < maxCount) {
-            Scanner answer = new Scanner(System.in);
-            final int number1 = (int) ((Math.random() * 100) + 1);
-            final int number2 = (int) ((Math.random() * 100) + 1);
-            int result = gcd(number1, number2);
-
-            System.out.println("Question: " + number1 + " " + number2);
-            int answerNext = answer.nextInt();
-
-            if (Engine.correctOrNot(answerNext == result, result, answerNext)) {
-                break;
-            }
-
-            count++;
-        }
-
-        Engine.congratulations(count == maxCount);
-
+    public static void gcdGreeting() {
+        String[][] answers = questions();
+        Engine.runEngine(RULES, answers);
     }
 
-    public static int gcd(int a, int b) {
-        return (a % b == 0) ? Math.abs(b) : gcd(b, a % b);
+    private static String[][] questions() {
+        String[][] questionsAndCorrectAnswers = new String[COUNT][2];
+        for (int i = 0; i < COUNT; i++) {
+            int number1 = Utils.generateNum();
+            int number2 = Utils.generateNum();
+            String question = (number1) + " " + (number2);
+            String correctAnswer = String.valueOf(find(number1, number2));
+            questionsAndCorrectAnswers[i][0] = question;
+            questionsAndCorrectAnswers[i][1] = correctAnswer;
+        }
+        return questionsAndCorrectAnswers;
+    }
+
+    private static int find(int number1, int number2) {
+        if (number2 == 0) {
+            return number1;
+        }
+        return find(number2, number1 % number2);
     }
 }
