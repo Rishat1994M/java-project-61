@@ -13,6 +13,7 @@ public class Progression {
     private static final int MIN_STEP = 2;
 
     public static void progressionGreeting() {
+        Utils.setBound(100);
         String[][] questionsAndAnswers = generateQuestions();
         Engine.runEngine(RULES, questionsAndAnswers);
     }
@@ -21,9 +22,9 @@ public class Progression {
         String[][] questionsAndAnswers = new String[COUNT][2];
         for (int i = 0; i < COUNT; i++) {
             int startNumber = Utils.generateNum();
-            int step = Utils.generaNum(MIN_STEP, MAX_STEP);
-            int progressionLength = Utils.generaNum(MIN_SIZE, MAX_SIZE);
-            int missingIndex = Utils.generaNum(0, progressionLength - 1);
+            int step = Utils.generateNumber(MIN_STEP, MAX_STEP);
+            int progressionLength = Utils.generateNumber(MIN_SIZE, MAX_SIZE);
+            int missingIndex = Utils.generateNumber(0, progressionLength - 1);
 
             String[] progression = makeProgression(startNumber, step, progressionLength);
             String answer = progression[missingIndex];
@@ -45,4 +46,3 @@ public class Progression {
         return progression;
     }
 }
-//Надеюсь я правильно понял...

@@ -10,6 +10,7 @@ public class Prime {
     private static final String RULES = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
     public static void primeGreeting() {
+        Utils.setBound(100);
         String[][] answers = questions();
         Engine.runEngine(RULES, answers);
     }
@@ -19,16 +20,11 @@ public class Prime {
         for (int i = 0; i < COUNT; i++) {
             int number = Utils.generateNum();
             String question = String.valueOf(number);
-            String correctAnswer = answer(number);
+            String correctAnswer = isPrime(number) ? "yes" : "no";
             questions[i][0] = question;
             questions[i][1] = correctAnswer;
         }
         return questions;
-    }
-
-    private static String answer(int number) {
-
-        return isPrime(number) ? "yes" : "no";
     }
 
     private static boolean isPrime(int number) {
@@ -43,4 +39,3 @@ public class Prime {
         return true;
     }
 }
-

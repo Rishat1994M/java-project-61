@@ -14,7 +14,7 @@ public class App {
 
     public static void main(String[] args) {
         showMenu();
-        runingGames();
+        runningGames();
     }
 
     private static void showMenu() {
@@ -29,33 +29,19 @@ public class App {
         System.out.println();
     }
 
-    private static void runingGames() {
+    private static void runningGames() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Your choice: ");
         String userChoice = scanner.next();
         switch (userChoice) {
-            case ("1"):
-                questionUser();
-                break;
-            case ("2"):
-                evenGreeting();
-                break;
-            case ("3"):
-                calcGreeting();
-                break;
-            case ("4"):
-                gcdGreeting();
-                break;
-            case ("5"):
-                progressionGreeting();
-                break;
-            case ("6"):
-                primeGreeting();
-                break;
-            default:
-                break;
+            case "1" -> questionUser();
+            case "2" -> evenGreeting();
+            case "3" -> calcGreeting();
+            case "4" -> gcdGreeting();
+            case "5" -> progressionGreeting();
+            case "6" -> primeGreeting();
+            default -> System.out.println("Number entered incorrectly: " + userChoice);
         }
         scanner.close();
     }
 }
-
