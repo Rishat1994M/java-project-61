@@ -9,6 +9,7 @@ public class Even {
     private static final String QUESTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
     public static void evenGreeting() {
+        Utils.setBound(100);
         String[][] answers = questions();
         Engine.runEngine(QUESTION, answers);
     }

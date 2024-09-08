@@ -9,6 +9,7 @@ public class GCD {
     private static final String RULES = "Find the greatest common divisor of given numbers.";
 
     public static void gcdGreeting() {
+        Utils.setBound(100);
         String[][] answers = questions();
         Engine.runEngine(RULES, answers);
     }

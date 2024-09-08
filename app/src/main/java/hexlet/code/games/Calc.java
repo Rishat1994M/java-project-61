@@ -3,12 +3,18 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
+import java.util.Random;
+
 import static hexlet.code.Engine.COUNT;
 
 public class Calc {
     private static final String RULES = "What is the result of the expression?";
+    static Random random = new Random();
+    private static final String[] RANDOM_OPERATOR = {"+", "-", "*", "-"};
+    private static final int GENERATE_NUMBER = 3;
 
     public static void calcGreeting() {
+        Utils.setBound(100);
         String[][] answers = questions();
         Engine.runEngine(RULES, answers);
     }
@@ -18,8 +24,8 @@ public class Calc {
         for (int i = 0; i < COUNT; i++) {
             int number1 = Utils.generateNum();
             int number2 = Utils.generateNum();
-            String operator = Utils.generateOperators();
-            String question = String.valueOf(number1) + " " + operator + " " + String.valueOf(number2);
+            String operator = generateOperators();
+            String question = number1 + " " + operator + " " + number2;
             String correctAnswer = String.valueOf(calculate(number1, number2, operator));
             questionsAndCorrectAnswers[i][0] = question;
             questionsAndCorrectAnswers[i][1] = correctAnswer;
@@ -28,20 +34,22 @@ public class Calc {
     }
 
     private static int calculate(int number1, int number2, String operator) {
-        switch (operator) {
-            case "+":
-                return number1 + number2;
-            case "-":
-                return number1 - number2;
-            case "*":
-                return number1 * number2;
-            case "/":
-                if (number1 == 0 || number1 == 0) {
+        return switch (operator) {
+            case "+" -> number1 + number2;
+            case "-" -> number1 - number2;
+            case "*" -> number1 * number2;
+            case "/" -> {
+                if (number2 == 0) {
                     throw new ArithmeticException("Division by zero");
                 }
-                return number1 / number2;
-            default:
-                throw new RuntimeException("Unknown operator: " + operator);
-        }
+                yield number1 / number2;
+            }
+            default -> throw new RuntimeException("Unknown operator: " + operator);
+        };
+    }
+
+    public static String generateOperators() {
+        int indexOfArray = random.nextInt(GENERATE_NUMBER);
+        return RANDOM_OPERATOR[indexOfArray];
     }
 }
