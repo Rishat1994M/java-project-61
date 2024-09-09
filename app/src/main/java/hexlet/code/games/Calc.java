@@ -3,15 +3,11 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
-import java.util.Random;
-
-import static hexlet.code.Engine.COUNT;
-
 public class Calc {
     private static final String RULES = "What is the result of the expression?";
-    static Random random = new Random();
     private static final String[] RANDOM_OPERATOR = {"+", "-", "*", "-"};
-    private static final int GENERATE_NUMBER = 3;
+    private static final int GENERATE_NUMBER = RANDOM_OPERATOR.length;
+    private static final int COUNT = 3;
 
     public static void calcGreeting() {
         Utils.setBound(100);
@@ -49,7 +45,7 @@ public class Calc {
     }
 
     public static String generateOperators() {
-        int indexOfArray = random.nextInt(GENERATE_NUMBER);
+        int indexOfArray = Utils.generateNumber(0, GENERATE_NUMBER);
         return RANDOM_OPERATOR[indexOfArray];
     }
 }
