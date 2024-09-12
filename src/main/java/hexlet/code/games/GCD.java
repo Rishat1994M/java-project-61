@@ -3,22 +3,19 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
-import static hexlet.code.Engine.COUNT;
-
 public class GCD {
     private static final String RULES = "Find the greatest common divisor of given numbers.";
 
     public static void gcdGreeting() {
-        Utils.setBound(100);
         String[][] answers = questions();
         Engine.runEngine(RULES, answers);
     }
 
     private static String[][] questions() {
-        String[][] questionsAndCorrectAnswers = new String[COUNT][2];
-        for (int i = 0; i < COUNT; i++) {
-            int number1 = Utils.generateNum();
-            int number2 = Utils.generateNum();
+        String[][] questionsAndCorrectAnswers = new String[Engine.ROUNDS][2];
+        for (int i = 0; i < Engine.ROUNDS; i++) {
+            int number1 = Utils.generateNum(Engine.STARTLIMIT, Engine.ENDLIMIT);
+            int number2 = Utils.generateNum(Engine.STARTLIMIT, Engine.ENDLIMIT);
             String question = (number1) + " " + (number2);
             String correctAnswer = String.valueOf(find(number1, number2));
             questionsAndCorrectAnswers[i][0] = question;
