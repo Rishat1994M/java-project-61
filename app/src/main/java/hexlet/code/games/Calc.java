@@ -6,7 +6,8 @@ import hexlet.code.Utils;
 public class Calc {
     private static final String RULES = "What is the result of the expression?";
     private static final String[] RANDOM_OPERATOR = {"+", "-", "*", "-"};
-
+    public static final int STARTLIMIT = 1;
+    public static final int ENDLIMIT = 100;
 
     public static void calcGreeting() {
         String[][] answers = questions();
@@ -16,8 +17,8 @@ public class Calc {
     private static String[][] questions() {
         String[][] questionsAndCorrectAnswers = new String[Engine.ROUNDS][2];
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            int number1 = Utils.generateNum(Engine.STARTLIMIT, Engine.ENDLIMIT);
-            int number2 = Utils.generateNum(Engine.STARTLIMIT, Engine.ENDLIMIT);
+            int number1 = Utils.generateNumber(STARTLIMIT, ENDLIMIT);
+            int number2 = Utils.generateNumber(STARTLIMIT, ENDLIMIT);
             String operator = generateOperators();
             String question = number1 + " " + operator + " " + number2;
             String correctAnswer = String.valueOf(calculate(number1, number2, operator));

@@ -5,6 +5,8 @@ import hexlet.code.Utils;
 
 public class Progression {
     private static final String RULES = "What number is missing in the progression?";
+    public static final int STARTLIMIT = 1;
+    public static final int ENDLIMIT = 100;
     private static final int MIN_SIZE = 5;
     private static final int MAX_SIZE = 11;
     private static final int MAX_STEP = 6;
@@ -18,7 +20,7 @@ public class Progression {
     private static String[][] generateQuestions() {
         String[][] questionsAndAnswers = new String[Engine.ROUNDS][2];
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            int startNumber = Utils.generateNum(Engine.STARTLIMIT, Engine.ENDLIMIT);
+            int startNumber = Utils.generateNumber(STARTLIMIT, ENDLIMIT);
             int step = Utils.generateNumber(MIN_STEP, MAX_STEP);
             int progressionLength = Utils.generateNumber(MIN_SIZE, MAX_SIZE);
             int missingIndex = Utils.generateNumber(0, progressionLength - 1);
